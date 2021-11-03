@@ -1,0 +1,204 @@
+(base) kruparaju@linux:~$ mkdir <folder name>^C
+(base) kruparaju@linux:~$ mkdir ws2
+mkdir: cannot create directory ‘ws2’: File exists
+(base) kruparaju@linux:~$ mkdir ws3
+(base) kruparaju@linux:~$ cd ws3
+(base) kruparaju@linux:~/ws3$ ls
+(base) kruparaju@linux:~/ws3$ ls -a
+.  ..
+(base) kruparaju@linux:~/ws3$ git status
+fatal: not a git repository (or any of the parent directories): .git
+(base) kruparaju@linux:~/ws3$ git init
+Initialized empty Git repository in /home/kruparaju/ws3/.git/
+(base) kruparaju@linux:~/ws3$ ls -a
+.  ..  .git
+(base) kruparaju@linux:~/ws3$ git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+(base) kruparaju@linux:~/ws3$ echo "krupa"
+krupa
+(base) kruparaju@linux:~/ws3$ echo "krupa" >> file1.txt
+(base) kruparaju@linux:~/ws3$ ls 
+file1.txt
+(base) kruparaju@linux:~/ws3$ cat file.txt
+cat: file.txt: No such file or directory
+(base) kruparaju@linux:~/ws3$ cat file1.txt
+krupa
+(base) kruparaju@linux:~/ws3$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	file1.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+(base) kruparaju@linux:~/ws3$ git add file1.txt
+(base) kruparaju@linux:~/ws3$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   file1.txt
+
+(base) kruparaju@linux:~/ws3$ git commit 
+[master (root-commit) 01aec07] first commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file1.txt
+(base) kruparaju@linux:~/ws3$ git log
+commit 01aec072c34f67d10e15f54612d2d168879deb5c (HEAD -> master)
+Author: kalla kruparaju <kallakruparaju@gmail.com>
+Date:   Wed Nov 3 18:44:47 2021 +0530
+
+    first commit
+(base) kruparaju@linux:~/ws3$ ls 
+file1.txt
+(base) kruparaju@linux:~/ws3$ git remote -v
+(base) kruparaju@linux:~/ws3$ git remote add krupa https://github.com/kallakruparaju/flutterdev.git
+(base) kruparaju@linux:~/ws3$ git remote -v
+krupa	https://github.com/kallakruparaju/flutterdev.git (fetch)
+krupa	https://github.com/kallakruparaju/flutterdev.git (push)
+(base) kruparaju@linux:~/ws3$ git push master
+fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream master master
+
+(base) kruparaju@linux:~/ws3$ git push krupa
+fatal: The current branch master has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream krupa master
+
+(base) kruparaju@linux:~/ws3$ git push --set-upstream master master
+fatal: 'master' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+(base) kruparaju@linux:~/ws3$ git barnch
+git: 'barnch' is not a git command. See 'git --help'.
+
+The most similar command is
+	branch
+(base) kruparaju@linux:~/ws3$ git branch
+* master
+(base) kruparaju@linux:~/ws3$ git branch -m main
+(base) kruparaju@linux:~/ws3$ git push krupa main
+Username for 'https://github.com': kallakruparaju
+Password for 'https://kallakruparaju@github.com': 
+remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.
+fatal: Authentication failed for 'https://github.com/kallakruparaju/flutterdev.git/'
+(base) kruparaju@linux:~/ws3$ git remote add flutterdev https://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@github.com/kallakruparaju/flutterdev
+(base) kruparaju@linux:~/ws3$ git push flutterdev
+fatal: The current branch main has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream flutterdev main
+
+(base) kruparaju@linux:~/ws3$ git branch -m main
+(base) kruparaju@linux:~/ws3$ git push flutterdev main
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 219 bytes | 13.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/kallakruparaju/flutterdev
+ * [new branch]      main -> main
+(base) kruparaju@linux:~/ws3$ ls
+file1.txt
+(base) kruparaju@linux:~/ws3$ git branch
+* main
+(base) kruparaju@linux:~/ws3$ git branch dev1
+(base) kruparaju@linux:~/ws3$ git branch
+  dev1
+* main
+(base) kruparaju@linux:~/ws3$ git checkout dev1
+Switched to branch 'dev1'
+(base) kruparaju@linux:~/ws3$ ls 
+file1.txt
+(base) kruparaju@linux:~/ws3$ echo "2nd file" >> file2.txt
+(base) kruparaju@linux:~/ws3$ ls
+file1.txt  file2.txt
+(base) kruparaju@linux:~/ws3$ git status
+On branch dev1
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	file2.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+(base) kruparaju@linux:~/ws3$ git add .
+(base) kruparaju@linux:~/ws3$ git status
+On branch dev1
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   file2.txt
+
+(base) kruparaju@linux:~/ws3$ git commit 
+Aborting commit due to empty commit message.
+(base) kruparaju@linux:~/ws3$ git commit -m "second commit from dev1 branch"
+[dev1 9dff5d8] second commit from dev1 branch
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file2.txt
+(base) kruparaju@linux:~/ws3$ git log
+commit 9dff5d8688bff2189dffcf0755727d44e547d979 (HEAD -> dev1)
+Author: kalla kruparaju <kallakruparaju@gmail.com>
+Date:   Wed Nov 3 19:11:25 2021 +0530
+
+    second commit from dev1 branch
+
+commit 01aec072c34f67d10e15f54612d2d168879deb5c (flutterdev/main, main)
+Author: kalla kruparaju <kallakruparaju@gmail.com>
+Date:   Wed Nov 3 18:44:47 2021 +0530
+
+    first commit
+(base) kruparaju@linux:~/ws3$ ls
+file1.txt  file2.txt
+(base) kruparaju@linux:~/ws3$ git checkout main
+Switched to branch 'main'
+(base) kruparaju@linux:~/ws3$ ls
+file1.txt
+(base) kruparaju@linux:~/ws3$ git checkout dev1
+Switched to branch 'dev1'
+(base) kruparaju@linux:~/ws3$ ls
+file1.txt  file2.txt
+(base) kruparaju@linux:~/ws3$ git status
+On branch dev1
+nothing to commit, working tree clean
+(base) kruparaju@linux:~/ws3$ git push flutterdev dev1
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 291 bytes | 291.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+remote: 
+remote: Create a pull request for 'dev1' on GitHub by visiting:
+remote:      https://github.com/kallakruparaju/flutterdev/pull/new/dev1
+remote: 
+To https://github.com/kallakruparaju/flutterdev
+ * [new branch]      dev1 -> dev1
+(base) kruparaju@linux:~/ws3$ ls
+file1.txt  file2.txt
+(base) kruparaju@linux:~/ws3$ git checkout main
+Switched to branch 'main'
+(base) kruparaju@linux:~/ws3$ ls
+file1.txt
+(base) kruparaju@linux:~/ws3$ git merge file2.txt
+merge: file2.txt - not something we can merge
+(base) kruparaju@linux:~/ws3$ git merge dev1
+Updating 01aec07..9dff5d8
+Fast-forward
+ file2.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file2.txt
+(base) kruparaju@linux:~/ws3$ ls 
+file1.txt  file2.txt
+(base) kruparaju@linux:~/ws3$ 
+
